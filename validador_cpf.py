@@ -1,7 +1,4 @@
 import re
-cpf = '99905577726'
-
-
 def buscando_digitos_validadores(cpf):
     # soma
     multiplicacao = 0
@@ -34,28 +31,27 @@ def buscando_digitos_validadores(cpf):
 
 # função que irar validar o padrao recebido
 # e chamar a função: buscando_digitos_validadores
-def validar_padrao_cpf(cpf):
+def validar_padrao_cpf(cpf:str):
     padrao_cpf = re.compile(r'^(\d{3})\.(\d{3})\.(\d{3})-(\d{2})$')
     if padrao_cpf.match(cpf):
         padrao_recebido = cpf
         # tirando caracteres nao numericos
         cpf_limpo = str(padrao_recebido).replace('.','',).replace('-','')
-        print(padrao_recebido)
         # [:9] -> pega os 9 primeiros digitos para gerar os DV
         cpf_de_retorno = buscando_digitos_validadores(cpf_limpo[:9])
-        print(cpf_de_retorno)
         if cpf_de_retorno == cpf_limpo:
-            print('\033[32mValido\033[m')
+            return cpf_de_retorno,'CPF VALIDO'
         else:
-            print('\033[31mInvalido\033[m')
+            return cpf_de_retorno,'CPF INVALIDO'
     else:
         # [:9] -> pega os 9 primeiros digitos para gerar os DV
         cpf_de_retorno = buscando_digitos_validadores(cpf[:9])
         if cpf_de_retorno == cpf:
-            print('\033[32mValido\033[m')
+            return cpf_de_retorno,'CPF VALIDO'
         else:
-            print('\033[31mInvalido\033[m')
-validar_padrao_cpf(cpf)
+            return cpf_de_retorno,'CPF INVALIDO'
+
+
 
 
 

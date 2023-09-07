@@ -33,7 +33,16 @@ def gerar_cpf():
         segundo_dv = 0
     else:
         segundo_dv = 11 - resto_segundo
-    return f'{cpf_nove_digitos}{primeiro_dv}{segundo_dv}'
+
+    # transformando padrao de cpf
+    # adicionado pontos e traço em cada indice na lista
+    nove_digito.insert(3,'.')
+    nove_digito.insert(7,'.')
+    cpf_com_ponto = ''
+    for caracter in nove_digito:
+        cpf_com_ponto += str(caracter)
+    return f'{cpf_com_ponto}-{primeiro_dv}{segundo_dv}'
+
     
 print(gerar_cpf())
 
