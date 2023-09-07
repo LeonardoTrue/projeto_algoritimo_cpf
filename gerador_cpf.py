@@ -4,15 +4,15 @@ random = SystemRandom()
 def gerar_cpf():
     cpf_nove_digitos = ''
     # gerando digitos base|regiao fiscal de emissão(9° digito)
-    nove_digito = [random.randint(0,9),random.randint(0,9),
-                   random.randint(0,9),random.randint(0,9),
-                   random.randint(0,9),random.randint(0,9),
-                   random.randint(0,9),random.randint(0,9),
-                   random.randint(0,9)]
+    nove_digito = []
+    for num in range(1,10):
+        aleatorio = random.randint(0,9)
+        nove_digito.append(aleatorio)
+
     for digito in nove_digito:
         cpf_nove_digitos += str(digito)
     soma = 0
-    # pegar primeiro digito validador dos primeiros nove digitos
+    # pegar primeiro digito validador pelos primeiros nove digitos
     for digitos,rang in enumerate(range(10,1,-1)):
         soma += int(cpf_nove_digitos[digitos]) * rang
 
@@ -36,3 +36,4 @@ def gerar_cpf():
     return f'{cpf_nove_digitos}{primeiro_dv}{segundo_dv}'
     
 print(gerar_cpf())
+
