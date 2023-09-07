@@ -115,7 +115,4 @@ class TelaCpf:
     def evento_cor_borda_botao_off_gerador_cpf(self,event):
         self.botao_gerador_cpf.configure(border_color=cores['botoes_hover']) 
 
-app = TelaCpf()
-
-
-        
+app = TelaCpf()    
